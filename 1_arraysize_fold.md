@@ -49,7 +49,7 @@ std::cout << arraysize(a)      // 4
 A function template defines a set of functions. You can imagine the functions living in a multi-dimensional space where each point represents a concrete function with different coordinates, or parameters. That space is defined inside of the angle brackets after the keyword `template`: `<typename T, std::size_t Size>`. What that declaration says is that our function space has two dimensions: the first one is called `T` and has the type `typename`, which means that `T` can stand for any concrete type, such as `int`, `float`, `char`, or whatever. The second dimension is called `Size` and covers all possible values of the type `std::size_t` (btw: `std` is just a namespace prefix). Let's actually draw a coordinate system, just for the purpose of better imagination:
 
 ````
-o--int--float--char--...---> T (order not significant)
+o--int--float--char--…--> T (order not significant)
 |
 0   x     x     x
 |
@@ -57,6 +57,7 @@ o--int--float--char--...---> T (order not significant)
 |
 2   x     x     x
 |
+…
 |
 V Size
 
@@ -135,7 +136,7 @@ Same for `mul`, except that it uses `*` instead of `+`.
 If you were to draw a coordinate system, as above, for the dimensions of either of those functions, it would look rather boring:
 ````
     x     x     x
-o--int--float--char--...---> T (order not significant)
+o--int--float--char--…--> T (order not significant)
 
 T ∈ typename
 ````
