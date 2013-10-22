@@ -1,6 +1,8 @@
-<i>This file is the documentation for [1_arraysize_fold.cpp](1_arraysize_fold.cpp). It doesn't exactly go line by line, but almost. Maybe you want to [look at the program](1_arraysize_fold.cpp) before reading the explanations given here.</i>
+<i>This file explains the code in [1_arraysize_fold.cpp](1_arraysize_fold.cpp). It doesn't exactly go line by line, but almost. Maybe you want to [look at the program](1_arraysize_fold.cpp) before reading the explanations given here.</i>
 
 # Array size, function templates, and something like folds
+
+Welcome to this readme turned blog post. It teaches you about function templates, and what the hell they have to do with the length of arrays. And with monoids.
 
 The program starts by importing `iostream`, so we can print to `stdout` via `cout`, and `numeric`, so we get the array iterator `accumulate`.
 
@@ -9,7 +11,12 @@ The program starts by importing `iostream`, so we can print to `stdout` via `cou
 #include <numeric>
 ```
 
-Now that those libraries are included, the real journey through the world of function overloading using template functions can begin.
+Now that those libraries are included, the real journey through the world of function overloading using template functions can begin. Here is the first piece of code we're investigating:
+
+```cpp
+template <typename T, std::size_t Size>
+std::size_t arraysize(T (&)[Size]) { return Size; }
+```
 
 ## Determining the size of an array
 
