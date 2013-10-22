@@ -124,7 +124,7 @@ o--int--float--char--...---> T (order not significant)
 T ∈ typename
 ````
 
-<i>Aside: The function body implies that there is a condition a suitable type has to satisfy: the operator `+` (resp. `*`) has to be defined for it. The generic function signature itself knows nothing about this, which means it may be a little too generic. I don't know if C++ supports any sort of constraints on types, which would be a solution, but I assume that being too generic does not usually lead to big problems in practice.</i>
+<i>Aside: The function body implies that there is a condition suitable types have to satisfy: the operator `+` (resp. `*`) has to be defined for it. The generic function signature itself knows nothing about this, which means it may be a little too generic. I don't know if C++ supports any sort of constraints on types, which would be a solution, but I assume that being too generic does not usually lead to big problems in practice.</i>
 
 Movin' on:
 
