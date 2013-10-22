@@ -148,7 +148,7 @@ The way we tell the iterator function `std::accumulate` what to do is by passing
 
 `accumulate` takes four arguments: start, end, initial value, and a binary operation. "Start" has to point to the beginning of an array, which is easily done by just giving it a reference to the whole array. "End" has to point to the end of the same array. In the implementation, we're using the same trick as in the `arraysize` function to extract the size from the type of the argument, and then add that to the "start" argument.
 
-The initial value for addition has to be 0, because `0 + anything` is still `anything`, and it must be 1 for multiplication, because `1 * anything` is still `anything`. (Yes, it's the neutral element of a monoid etc…)
+The initial value for addition has to be 0, because `0 + anything` is still `anything`, and it must be 1 for multiplication, because `1 * anything` is still `anything`. (Yes, it's the [identity element of a monoid](http://en.wikipedia.org/wiki/Monoid) etc…)
 
 We have to pass on the type `T` to the binary operation, as in `add<T>` and `mul<T>`, because even though we know that `accumulate` will call those functions on elements of an array whose items have the type `T`, the compiler doesn't. So we kind of help it out there and let it know that `add` and `mul` are expected to receive arguments of the same type `T` as the outer functions `sum` and `prod`. Because in theory that type could be anything; it really depends on the implementation of `accumulate`, which we can't see right here, but whatever that implementation says is not enough for the compiler to understand that relationship.
 
