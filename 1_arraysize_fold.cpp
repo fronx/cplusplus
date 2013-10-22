@@ -27,6 +27,7 @@ int main ()
   int   a[] = { 1, 2, 3, 4 };
   float b[] = { 1.1, 2.5, 3.4 };
   std::cout << arraysize(a)             // 4
+            << "\n" << arraysize(b)     // 3
             << "\n" << mul(a[1], a[2])  // 6
             << "\n" << mul(b[1], b[2])  // 8.5
             << "\n" << sum(a)           // 10

@@ -132,13 +132,13 @@ Movin' on:
 template <typename T, std::size_t Size>
 T sum (T (&a)[Size])
 {
-  return std::accumulate(a, a + Size, 0, add<T>);
+  return std::accumulate(a, a + Size, static_cast<T>(0), add<T>);
 }
 
 template <typename T, std::size_t Size>
 T prod (T (&a)[Size])
 {
-  return std::accumulate(a, a + Size, 1, mul<T>);
+  return std::accumulate(a, a + Size, static_cast<T>(1), mul<T>);
 }
 ```
 
@@ -148,7 +148,7 @@ The way we tell the iterator function `std::accumulate` what to do is by passing
 
 `accumulate` takes four arguments: start, end, initial value, and a binary operation. "Start" has to point to the beginning of an array, which is easily done by just giving it a reference to the whole array. "End" has to point to the end of the same array. In the implementation, we're using the same trick as in the `arraysize` function to extract the size from the type of the argument, and then add that to the "start" argument.
 
-The initial value for addition has to be 0, because `0 + anything` is still `anything`, and it must be 1 for multiplication, because `1 * anything` is still `anything`. (Yes, it's the [identity element of a monoid](http://en.wikipedia.org/wiki/Monoid) etc…)
+The initial value for addition has to be 0, because `0 + anything` is still `anything`, and it must be 1 for multiplication, because `1 * anything` is still `anything`. (Yes, it's the [identity element of a monoid](http://en.wikipedia.org/wiki/Monoid) etc…) In the code we also explicitly cast the initial value to `T` because if the concrete type is `float`, we need to use `0.0`, and if it's `int`, we need to use `0`. `static_cast<T>` does that for us.
 
 We have to pass on the type `T` to the binary operation, as in `add<T>` and `mul<T>`, because even though we know that `accumulate` will call those functions on elements of an array whose items have the type `T`, the compiler doesn't. So we kind of help it out there and let it know that `add` and `mul` are expected to receive arguments of the same type `T` as the outer functions `sum` and `prod`. Because in theory that type could be anything; it really depends on the implementation of `accumulate`, which we can't see right here, but whatever that implementation says is not enough for the compiler to understand that relationship.
 
@@ -159,11 +159,16 @@ And finally, we're putting it all together into a little test program:
 ```cpp
 int main ()
 {
-  int a[] = { 1, 2, 3, 4 };
+  int   a[] = { 1, 2, 3, 4 };
+  float b[] = { 1.1, 2.5, 3.4 };
   std::cout << arraysize(a)             // 4
+            << arraysize(b)             // 3
             << "\n" << mul(a[1], a[2])  // 6
+            << "\n" << mul(b[1], b[2])  // 8.5
             << "\n" << sum(a)           // 10
+            << "\n" << sum(b)           // 7
             << "\n" << prod(a)          // 24
+            << "\n" << prod(b)          // 9.35
             << "\n"
   ;
   return 0;
