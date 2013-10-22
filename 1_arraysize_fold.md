@@ -122,6 +122,10 @@ Here is how they're used:
 int a[] = { 1, 2, 3, 4 };
 add(a[2], a[3]) // 7
 mul(a[1], a[2]) // 6
+
+float b[] = { 1.1, 2.5, 3.4 };
+add(b[1], b[2])  // 5.9
+mul(b[1], b[2])  // 8.5
 ```
 
 When the compiler sees a call like `add(a[2], a[3])`, it matches the types of the arguments and the name of the function to existing function signatures. In our case, the function signature for `add` is generic, parameterized by some unknown but knowable type `T`. What it says is that `add` is a function that takes two arguments that have to have the same type (`T`), and returns a value that's also of type `T`. And the way it does that is by using the `+` operator internally (`+` is itself generic).
