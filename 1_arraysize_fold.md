@@ -32,7 +32,7 @@ int a[] = { 1, 2, 3, 4 };
 std::cout << arraysize(a) // 4
 ```
 
-The two lines (`template…` and `std::size_t…`) belong together, meaning, the first line defines elements that are used by the second line. (In fact, you could even remove the line break and have them as one line.)
+The two lines (`template…` and `std::size_t…`) belong together, meaning the first line defines elements that are used by the second line. (In fact, you could even remove the line break and have them as one line.)
 
 ### What is a function template?
 
