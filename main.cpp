@@ -1,4 +1,3 @@
-#include <cstddef>
 #include <iostream>
 #include <numeric>
 
@@ -6,33 +5,31 @@ template <typename T, std::size_t Size>
 std::size_t arraysize(T (&)[Size]) { return Size; }
 
 template <typename T>
-T add (T &a, T &b)
-{
-  return a + b;
-}
+T add (T &a, T &b) { return a + b; }
 
 template <typename T>
-T mul (T &a, T &b)
+T mul (T &a, T &b) { return a * b; }
+
+template <typename T, std::size_t Size>
+T sum (T (&a)[Size])
 {
-  return a * b;
+  return std::accumulate(a, a + Size, 0, add<T>);
 }
 
-template <typename T>
-T sum (T a[])
+template <typename T, std::size_t Size>
+T prod (T (&a)[Size])
 {
-  return accumulate(a, a + arraysize<T>(a), 0, add<T>);
-}
-
-template <typename T>
-T prod (T a[])
-{
-  return accumulate(a, a + arraysize<T>(a), 1, mul<T>);
+  return std::accumulate(a, a + Size, 1, mul<T>);
 }
 
 int main ()
 {
   int a[] = { 1, 2, 3, 4 };
-  std::cout << arraysize(a); // works
-  // std::cout << sum(a) << "\n" << prod(a); // doesn't work (see errors.txt)
+  std::cout << arraysize(a)             // 4
+            << "\n" << mul(a[1], a[2])  // 6
+            << "\n" << sum(a)           // 10
+            << "\n" << prod(a)          // 24
+            << "\n"
+  ;
   return 0;
 }
