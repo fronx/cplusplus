@@ -9,6 +9,8 @@ The program starts by importing `iostream`, so we can print to `stdout` via `cou
 #include <numeric>
 ```
 
+Now that those libraries are included, the real journey through the world of function overloading using template functions can begin.
+
 ## Determining the size of an array
 
 C arrays (which we're also using here even though it's C++) are really quite dumb data structures that come with no metadata, so things like the size of the array, or the type of its elements, can't be read from the memory representation at runtime. However, certain things can be known at compile time, because the compiler is a smart little (huge) thing that analyzes the code and keeps a record of all kinds of stuff it knows about your variables.
