@@ -19,7 +19,7 @@ In the case of static arrays whose content is specified once and never changes, 
 
 If we want to know the size of an array, it seems like a rather smart idea to just ask the compiler what it is, rather than computing it somehow (e.g. by dividing the size (in bytes) of the array by the size of its first element, or by looping through the array and counting).
 
-You can talk to the compiler and get at the information it has by writing a function template that contains placeholders for parameters that, in principle, can either get filled in by a human programmer or by the compiler. Here is how you do that:
+You can talk to the compiler and get at the information it has by writing a function template that contains placeholders for parameters that, in principle, can get filled in either by a human programmer or by the compiler itself, which is what we want. Here is how you do that:
 
 ```cpp
 template <typename T, std::size_t Size>
