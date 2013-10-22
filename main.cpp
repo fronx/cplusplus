@@ -33,6 +33,6 @@ int main ()
 {
   int a[] = { 1, 2, 3, 4 };
   std::cout << arraysize(a); // works
-  // std::cout << sum(a) << "\n" << prod(a); // doesn't work
+  // std::cout << sum(a) << "\n" << prod(a); // doesn't work (see errors.txt)
   return 0;
 }
