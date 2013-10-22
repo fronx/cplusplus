@@ -34,7 +34,7 @@ The two lines (`template…` and `std::size_t…`) belong together, meaning, the
 
 ### What is a function template?
 
-A template defines a set of functions. You can imagine the functions living in a multi-dimensional space where each point represents a croncrete function with different coordinates, or parameters. That space is defined inside of the angle brackets after the keyword `template`: `<typename T, std::size_t Size>`. What that declaration says is that our function space has two dimensions: the first one is called `T` and has the type `typename`, which means that `T` can stand for any concrete type, such as `int`, `float`, `char`, or whatever. The second dimension is called `Size` and covers all possible values of the type `std::size_t`. Let's actually draw a coordinate system, just for the purpose of better imagination:
+A template defines a set of functions. You can imagine the functions living in a multi-dimensional space where each point represents a concrete function with different coordinates, or parameters. That space is defined inside of the angle brackets after the keyword `template`: `<typename T, std::size_t Size>`. What that declaration says is that our function space has two dimensions: the first one is called `T` and has the type `typename`, which means that `T` can stand for any concrete type, such as `int`, `float`, `char`, or whatever. The second dimension is called `Size` and covers all possible values of the type `std::size_t` (btw: `std` is just a namespace prefix). Let's actually draw a coordinate system, just for the purpose of better imagination:
 
 ````
 o--int--float--char--...---> T (order not relevant)
@@ -56,7 +56,7 @@ Every `x` in the picture represents one concrete function. What the function tem
 
 In the source code, I've picked the name `T` for a type whose identity we don't know yet (it's a pretty common name to use), and the name `Size` for the other parameter/dimension, which has the type `std::size_t`. (That type is predefined somewhere as an `unsigned int`.) Those two template parameters are placeholders that will be filled in when the function `arraysize` gets called.
 
-The function declaration (line 2) consists of the following parts:
+Let's move on to the function declaration (line 2) that makes use of those parameters. It consists of the following parts:
 ````
 std::size_t      // the return type
 arraysize        // the function name
@@ -64,7 +64,7 @@ arraysize        // the function name
 { return Size; } // the function body
 ````
 
-The interesting part is the argument declaration `(T (&)[Size])`. Let's break it down by looking at increasingly complex examples, starting with simpler alternatives that wouldn't do what we want here, but would still be valid argument declarations:
+The interesting part is the argument declaration `(T (&)[Size])`. It specifies the type of just one argument, but does it in a pretty interesting way. Let's break it down by looking at increasingly complex examples, starting with simpler alternatives that wouldn't do what we want here, but would still be valid argument declarations:
 
 ````
 0. int a       // the argument has the type `int`, and we give it the name `a`
