@@ -28,8 +28,11 @@ std::size_t arraysize(T (&)[Size]) { return Size; }
 
 And here is how it would be used (copied from the `main` function):
 ```cpp
-int a[] = { 1, 2, 3, 4 };
-std::cout << arraysize(a) // 4
+int a[]   = { 1, 2, 3, 4 };
+float b[] = { 1.1, 2.5, 3.4 };
+std::cout << arraysize(a)      // 4
+          << arraysize(b)      // 3
+          ;
 ```
 
 The two lines (`template…` and `std::size_t…`) belong together, meaning the first line defines elements that are used by the second line. (In fact, you could even remove the line break and have them as one line.)
@@ -172,7 +175,7 @@ int main ()
             << "\n" << prod(a)          // 24
             << "\n" << prod(b)          // 9.35
             << "\n"
-  ;
+            ;
   return 0;
 }
 ```
