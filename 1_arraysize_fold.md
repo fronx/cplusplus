@@ -2,9 +2,9 @@
 
 # Array size, function templates, and something like folds
 
-Welcome to this readme turned blog post. It teaches you about function templates, and what the hell they have to do with the length of arrays. And with monoids.
+Welcome to this readme turned blog post. It teaches you about function templates, and what the hell they have to do with the length of arrays. And with monoids. It is also the first eposode of the great adventure of <a href="http://twitter.com/fronx">@fronx</a> learning C++! :D
 
-The program starts by importing `iostream`, so we can print to `stdout` via `cout`, and `numeric`, so we get the array iterator `accumulate`.
+Okay. So. The program starts by importing `iostream`, so we can print to `stdout` via `cout`, and `numeric`, so we get the array iterator `accumulate`.
 
 ```cpp
 #include <iostream>
