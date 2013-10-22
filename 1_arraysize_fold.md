@@ -19,7 +19,7 @@ In the case of static arrays whose content is specified once and never changes, 
 
 If we want to know the size of an array, it seems like a rather smart idea to just ask the compiler what it is, rather than computing it somehow (e.g. by dividing the size (in bytes) of the array by the size of its first element, or by looping through the array and counting).
 
-The way you can do that in C++ is by defining a generic function, i.e. a function that works on multiple types that either get filled in by a human programmer or by the compiler, and working with the information that's available when it matches a given function call. And here is how you do that:
+You can talk to the compiler and get at the information it has by writing a function template that contains placeholders for parameters that either get filled in by a human programmer or by the compiler. Here is how you do that:
 
 ```cpp
 template <typename T, std::size_t Size>
@@ -36,7 +36,7 @@ The two lines (`template…` and `std::size_t…`) belong together, meaning the 
 
 ### What is a function template?
 
-A template defines a set of functions. You can imagine the functions living in a multi-dimensional space where each point represents a concrete function with different coordinates, or parameters. That space is defined inside of the angle brackets after the keyword `template`: `<typename T, std::size_t Size>`. What that declaration says is that our function space has two dimensions: the first one is called `T` and has the type `typename`, which means that `T` can stand for any concrete type, such as `int`, `float`, `char`, or whatever. The second dimension is called `Size` and covers all possible values of the type `std::size_t` (btw: `std` is just a namespace prefix). Let's actually draw a coordinate system, just for the purpose of better imagination:
+A function template defines a set of functions. You can imagine the functions living in a multi-dimensional space where each point represents a concrete function with different coordinates, or parameters. That space is defined inside of the angle brackets after the keyword `template`: `<typename T, std::size_t Size>`. What that declaration says is that our function space has two dimensions: the first one is called `T` and has the type `typename`, which means that `T` can stand for any concrete type, such as `int`, `float`, `char`, or whatever. The second dimension is called `Size` and covers all possible values of the type `std::size_t` (btw: `std` is just a namespace prefix). Let's actually draw a coordinate system, just for the purpose of better imagination:
 
 ````
 o--int--float--char--...---> T (order not significant)
