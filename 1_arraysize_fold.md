@@ -20,7 +20,7 @@ std::size_t arraysize(T (&)[Size]) { return Size; }
 
 ## Determining the size of an array
 
-C arrays (which we're also using here even though it's C++) are really quite dumb data structures that come with no metadata, so things like the size of the array, or the type of its elements, can't be read from the memory representation at runtime. However, certain things can be known at compile time, because the compiler is a smart little (huge) thing that analyzes the code and keeps a record of all kinds of stuff it knows about your variables.
+C arrays (which we're also using here even though it's C++) are really quite dumb data structures that come with no metadata, so things like the size of the array, or the type of its elements, can't be read from the memory representation at runtime. However, certain things can be known at compile time, because the compiler is a smart little (huge) thing that analyzes the code and keeps a record of all kinds of stuff it knows about your variables and functions etc.
 
 In the case of static arrays whose content is specified once and never changes, the compiler allows itself to know their size and the type of their elements. To the compiler, those two pieces of information make up the type of the array itself, such as `int a[10]` (except that `a` is just a name, but you get the idea).
 
