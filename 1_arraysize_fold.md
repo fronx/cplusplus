@@ -1,4 +1,4 @@
-<i>This file is the documentation for [1_arraysize_fold.cpp](1_arraysize_fold.cpp). It doesn't exactly go line by line, but almoist. Maybe you want to [look at the program](1_arraysize_fold.cpp) before reading the explanations here.</i>
+<i>This file is the documentation for [1_arraysize_fold.cpp](1_arraysize_fold.cpp). It doesn't exactly go line by line, but almost. Maybe you want to [look at the program](1_arraysize_fold.cpp) before reading the explanations here.</i>
 
 # Array size, function templates, and something like folds
 
