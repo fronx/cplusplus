@@ -37,7 +37,7 @@ The two lines (`template…` and `std::size_t…`) belong together, meaning, the
 A template defines a set of functions. You can imagine the functions living in a multi-dimensional space where each point represents a concrete function with different coordinates, or parameters. That space is defined inside of the angle brackets after the keyword `template`: `<typename T, std::size_t Size>`. What that declaration says is that our function space has two dimensions: the first one is called `T` and has the type `typename`, which means that `T` can stand for any concrete type, such as `int`, `float`, `char`, or whatever. The second dimension is called `Size` and covers all possible values of the type `std::size_t` (btw: `std` is just a namespace prefix). Let's actually draw a coordinate system, just for the purpose of better imagination:
 
 ````
-o--int--float--char--...---> T (order not relevant)
+o--int--float--char--...---> T (order not significant)
 |
 0   x     x     x
 |
@@ -115,6 +115,16 @@ mul(a[1], a[2]) // 6
 When the compiler sees a call like `add(a[2], a[3])`, it matches the types of the arguments and the name of the function to existing function signatures. In our case, the function signature for `add` is generic, parameterized by some unknown but knowable type `T`. What it says is that `add` is a function that takes two arguments that have to have the same type (`T`), and returns a value that's also of type `T`. And the way it does that is by using the `+` operator internally (`+` is itself generic).
 
 Same for `mul`, except that it uses `*` instead of `+`.
+
+If you were to draw a coordinate system, as above, for the dimensions of either of those functions, it would look rather boring:
+````
+    x     x     x
+o--int--float--char--...---> T (order not significant)
+
+T ∈ typename
+````
+
+<i>Aside: The function body implies that there is a condition a suitable type has to satisfy: the operator `+` (resp. `*`) has to be defined for it. The generic function signature itself knows nothing about this, which means it may be a little too generic. I don't know if C++ supports any sort of constraints on types, which would be a solution, but I assume that being too generic does not usually lead to big problems in practice.</i>
 
 Movin' on:
 
