@@ -1,6 +1,6 @@
 <i>This file is the documentation for [1_arraysize_fold.cpp](1_arraysize_fold.cpp). It doesn't exactly go line by line, but almoist. Maybe you want to [look at the program](1_arraysize_fold.cpp) before reading the explanations here.</i>
 
-# 1] Array size and something like folds
+# Array size, function templates, and something like folds
 
 The program starts by importing `iostream`, so we can print to `stdout` via `cout`, and `numeric`, so we get the array iterator `accumulate`.
 
