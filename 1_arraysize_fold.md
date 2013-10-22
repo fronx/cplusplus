@@ -28,7 +28,7 @@ std::size_t arraysize(T (&)[Size]) { return Size; }
 
 And here is how it would be used (copied from the `main` function):
 ```cpp
-int a[]   = { 1, 2, 3, 4 };
+int   a[] = { 1, 2, 3, 4 };
 float b[] = { 1.1, 2.5, 3.4 };
 std::cout << arraysize(a)      // 4
           << arraysize(b)      // 3
