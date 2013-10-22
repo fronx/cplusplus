@@ -24,7 +24,7 @@ C arrays (which we're also using here even though it's C++) are really quite dum
 
 In the case of static arrays whose content is specified once and never changes, the compiler allows itself to know their size and the type of their elements. To the compiler, those two pieces of information make up the type of the array itself, such as `int a[10]` (except that `a` is just a name, but you get the idea).
 
-If we want to know the size of an array, it seems like a rather smart idea to just ask the compiler what it is, rather than computing it somehow (e.g. by dividing the size (in bytes) of the array by the size of its first element, or by looping through the array and counting).
+If we want to know the size of an array, it seems like a rather smart idea to just ask the compiler what it is, rather than computing it manually somehow (e.g. by dividing the size (in bytes) of the array by the size of its first element, or by looping through the array and counting).
 
 You can talk to the compiler and get at the information it has by writing a function template that contains placeholders for parameters that, in principle, can get filled in either by a human programmer or by the compiler itself, which is what we want. Here is how you do that:
 
