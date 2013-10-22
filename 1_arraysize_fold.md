@@ -11,7 +11,7 @@ The program starts by importing `iostream`, so we can print to `stdout` via `cou
 #include <numeric>
 ```
 
-Now that those libraries are included, the real journey through the world of function overloading using template functions can begin. Here is the first piece of code we're investigating:
+Now that those libraries are included, the real journey can begin. Here is the first piece of code we're investigating:
 
 ```cpp
 template <typename T, std::size_t Size>
