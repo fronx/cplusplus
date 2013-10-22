@@ -1,4 +1,4 @@
-<i>This file is the documentation for [1_arraysize_fold.cpp](1_arraysize_fold.cpp).</i>
+<i>This file is the documentation for [1_arraysize_fold.cpp](1_arraysize_fold.cpp). It doesn't exactly go line by line, but almoist. Maybe you want to [1_arraysize_fold.cpp](look at the program) before reading the explanations here.</i>
 
 # 1] Array size and something like folds
 
@@ -30,7 +30,31 @@ int a[] = { 1, 2, 3, 4 };
 std::cout << arraysize(a) // 4
 ```
 
-The two lines (`template…` and `std::size_t…`) belong together—a template declaration, in general, defines names for types and parts of type signatures that can be used in the function definition that comes right after it. I've picked the name `T` for a type whose identity we don't know yet (it's a pretty common name to use), and the name `Size` for another parameter of type `std::size_t`, which is predefined somewhere as an `unsigned int`. Those two parameters are placeholders that will be filled in when the function `arraysize` gets called.
+The two lines (`template…` and `std::size_t…`) belong together, meaning, the first line defines elements that are used by the second line. (In fact, you could even remove the line break and have them as one line.)
+
+### What is a function template?
+
+A template defines a set of functions. You can imagine the functions living in a multi-dimensional space where each point represents a croncrete function with different coordinates, or parameters. That space is defined inside of the angle brackets after the keyword `template`: `<typename T, std::size_t Size>`. What that declaration says is that our function space has two dimensions: the first one is called `T` and has the type `typename`, which means that `T` can stand for any concrete type, such as `int`, `float`, `char`, or whatever. The second dimension is called `Size` and covers all possible values of the type `std::size_t`. Let's actually draw a coordinate system, just for the purpose of better imagination:
+
+````
+o--int--float--char--...---> T (order not relevant)
+|
+0   x     x     x
+|
+1   x     x     x
+|
+2   x     x     x
+|
+|
+V Size
+
+T    ∈ typename
+Size ∈ std::size_t
+````
+
+Every `x` in the picture represents one concrete function. What the function template allows us to do is specify all of those functions in just one small, generic declaration, by defining the space, give the axes names, and use those names inside of the function definition.
+
+In the source code, I've picked the name `T` for a type whose identity we don't know yet (it's a pretty common name to use), and the name `Size` for the other parameter/dimension, which has the type `std::size_t`. (That type is predefined somewhere as an `unsigned int`.) Those two template parameters are placeholders that will be filled in when the function `arraysize` gets called.
 
 The function declaration (line 2) consists of the following parts:
 ````
