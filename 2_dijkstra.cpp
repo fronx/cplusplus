@@ -7,6 +7,7 @@ template<typename T>
 class Node
 {
 public:
+  Node(T _value) { value = _value; }
   T value;
 };
 
@@ -39,9 +40,15 @@ Nodes<T> Graph<T>::nodes ()
 }
 
 template<typename T>
+std::ostream& operator<< (std::ostream& out, Node<T> node)
+{
+  return out << node.value;
+}
+
+template<typename T>
 std::ostream& operator<< (std::ostream& out, Edge<T> edge)
 {
-  out << edge.a.value << " -> " << edge.b.value;
+  out << edge.a << " -> " << edge.b;
   return out;
 }
 
@@ -67,5 +74,8 @@ std::ostream& operator<< (std::ostream& out, Graph<T> graph)
 int main (void)
 {
   Graph<int> graph;
-  std::cout << graph;
+  Node<int> n = Node<int>(3);
+  std::cout      << "node:  " << n
+    << std::endl << "graph: " << graph
+    ;
 }
