@@ -39,15 +39,33 @@ Nodes<T> Graph<T>::nodes ()
 }
 
 template<typename T>
+std::ostream& operator<< (std::ostream& out, Edge<T> edge)
+{
+  out << edge.a.value << " -> " << edge.b.value;
+  return out;
+}
+
+template<typename T>
 std::ostream& operator<< (std::ostream& out, Edges<T> edges)
 {
+  out << " {";
+  for (auto &edge : edges)
+  {
+    out << std::endl << "  " << edge << std::endl;
+  }
+  out << "}";
+  return out;
+}
 
-  out << "haha";
+template<typename T>
+std::ostream& operator<< (std::ostream& out, Graph<T> graph)
+{
+  out << "[Graph" << graph.edges() << "]";
   return out;
 }
 
 int main (void)
 {
   Graph<int> graph;
-  std::cout << graph.edges();
+  std::cout << graph;
 }
