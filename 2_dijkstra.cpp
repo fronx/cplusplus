@@ -42,7 +42,7 @@ Nodes<T> Graph<T>::nodes ()
 template<typename T>
 std::ostream& operator<< (std::ostream& out, Node<T> node)
 {
-  return out << node.value;
+  return out << "(" << node.value << ")";
 }
 
 template<typename T>
@@ -77,5 +77,6 @@ int main (void)
   Node<int> n = Node<int>(3);
   std::cout      << "node:  " << n
     << std::endl << "graph: " << graph
+    << std::endl
     ;
 }
