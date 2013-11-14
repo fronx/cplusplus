@@ -80,3 +80,5 @@ int main (void)
     << std::endl
     ;
 }
+
+// g++ 2_dijkstra.cpp -std=c++11 && ./a.out
